@@ -17,8 +17,8 @@ function LoginForm() {
 	} = useForm()
 
 	const onSubmit = data => console.log(data)
-	console.log(watch("email")) // watch input value by passing the name of it
-	console.log(watch("password")) // watch input value by passing the name of it
+// 	console.log(watch("email")) // watch input value by passing the name of it
+// 	console.log(watch("password")) // watch input value by passing the name of it
 
 	const [email, setEmail] = React.useState("")
 	const [password, setPassword] = React.useState("")
