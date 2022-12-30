@@ -217,7 +217,7 @@ def api():
 
 		response = Response(generate(prompt, max_length, stop))
 		response.headers['Access-Control-Allow-Origin'] = '*'
-		response.headers['Access-Control-Allow-Methods'] = 'GET,POST'
+		response.headers['Access-Control-Allow-Methods'] = 'GET,POST,OPTIONS'
 		response.headers['Access-Control-Allow-Headers'] = 'Origin,X-Requested-With,Content-Type,Accept,Authorization'
 		return response
 
@@ -226,7 +226,7 @@ def api():
 
 	response = Response(help_response())
 	response.headers['Access-Control-Allow-Origin'] = '*'
-	response.headers['Access-Control-Allow-Methods'] = 'GET,POST'
+	response.headers['Access-Control-Allow-Methods'] = 'GET,POST,OPTIONS'
 	response.headers['Access-Control-Allow-Headers'] = 'Origin,X-Requested-With,Content-Type,Accept,Authorization'
 	
 	return response

@@ -1,17 +1,34 @@
 # Python Server Environment
 
-## Create an environment:
+## Install Python Environment
+
+Create an environment:
 
 	conda env create -f environment.yml
 	conda activate gpt
 
-## Updating
+Updating
 
 	conda env update --file environment.yml --prune
 
-## To delete an environment
+To delete an environment
 
 	conda env remove -n gpt
 
-# TypeScript / MUI
+## Install NextJS Environment
 
+	cd packages/chat-client
+	npm install
+
+## Development
+
+First begin by activating the conda environment and starting the python server:
+
+	conda activate gpt
+	cd ./server
+	./start.sh
+
+Next, in a new terminal tab, start the NEXTJS server
+
+	cd packages/chat-client/
+	npm run dev
