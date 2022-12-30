@@ -1,4 +1,19 @@
 module.exports = () => {
+
+  const headers = () => {
+    return [
+      {
+        source: '/',
+        headers: [
+          {
+            key: 'Access-Control-Allow-Origin',
+            value: 'http://localhost:8080/api',
+          },
+        ],
+      },
+    ]
+  };
+
   const rewrites = () => {
     return [
       {
@@ -7,7 +22,13 @@ module.exports = () => {
       },
     ];
   };
+  
+  
   return {
+    experimental: {
+    	proxyTimeout: 120_000
+    },
     rewrites,
+    headers,
   };
 };
