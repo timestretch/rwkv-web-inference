@@ -48,7 +48,9 @@ function LoginForm() {
 
 		try {
 			const textDecoder = new TextDecoder("utf-8")
-			const response = await window.fetch("http://localhost:8080/api", {
+			const host = location.host.split(":")[0]
+			const protocol = location.protocol
+			const response = await window.fetch(`${protocol}://${host}:8080/api`, {
 				// learn more about this API here: https://graphql-pokemon2.vercel.app/
 				method: "POST",
 				headers: {

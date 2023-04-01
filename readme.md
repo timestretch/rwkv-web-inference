@@ -1,3 +1,5 @@
+# Portions of this code are Based on RWKV-v4neo from https://github.com/BlinkDL/RWKV-LM
+
 # Python Server Environment
 
 ## Install Python Environment

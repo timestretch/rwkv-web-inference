@@ -1,0 +1,15 @@
+version: "3.8"
+
+services:
+  server:
+    build: server
+    # restart: always
+    volumes:
+      - "${HOME}/Models:/Users/erik"
+    ports:
+      - "8080:8080"
+
+  web:
+    build: packages/chat-client
+    ports:
+      - "3000:3000"
