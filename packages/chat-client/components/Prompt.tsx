@@ -11,7 +11,7 @@ import Alert from "@mui/material/Alert"
 import Stack from "@mui/material/Stack"
 import CircularProgress from "@mui/material/CircularProgress"
 
-function LoginForm() {
+function Prompt() {
 	const {
 		setValue,
 		register,
@@ -32,7 +32,7 @@ function LoginForm() {
 
 	// 	console.log(watch("prompt")) // watch input value by passing the name of it
 
-	const onSubmit = async formData => {
+	const onSubmit = React.useCallback(async formData => {
 		setSubmitting(true)
 		setError(null)
 
@@ -50,7 +50,9 @@ function LoginForm() {
 			const textDecoder = new TextDecoder("utf-8")
 			const host = location.host.split(":")[0]
 			const protocol = location.protocol
-			const response = await window.fetch(`${protocol}://${host}:8080/api`, {
+			const api = `${protocol}//${host}:8080/api`
+			console.log({host, protocol, api})
+			const response = await window.fetch(api, {
 				// learn more about this API here: https://graphql-pokemon2.vercel.app/
 				method: "POST",
 				headers: {
@@ -89,7 +91,7 @@ function LoginForm() {
 			setSubmitting(false)
 			return Promise.reject(error)
 		}
-	}
+	}, [submitting, error])
 
 	return (
 		<Card sx={{ m: 4 }}>
@@ -169,4 +171,4 @@ function LoginForm() {
 	)
 }
 
-export default LoginForm
+export default Prompt

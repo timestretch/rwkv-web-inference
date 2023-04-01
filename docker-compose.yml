@@ -4,8 +4,12 @@ services:
   server:
     build: server
     # restart: always
+    environment:
+      - MODELS_DIR=/models
+      - MODEL_FILE=RWKV-4-Pile-1B5-20220929-ctx4096
     volumes:
-      - "${HOME}/Models:/Users/erik"
+      - models:/models
+      # - "${HOME}/Models:/Users/erik"
     ports:
       - "8080:8080"
 
@@ -13,3 +17,6 @@ services:
     build: packages/chat-client
     ports:
       - "3000:3000"
+
+volumes:
+  models:
