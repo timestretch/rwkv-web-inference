@@ -9,7 +9,6 @@ services:
       - MODEL_FILE=RWKV-4-Pile-1B5-20220929-ctx4096
     volumes:
       - models:/models
-      # - "${HOME}/Models:/Users/erik"
     ports:
       - "8080:8080"
 
