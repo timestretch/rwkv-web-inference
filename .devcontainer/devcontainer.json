@@ -24,20 +24,50 @@
 		},
 		"ghcr.io/stuartleeks/dev-container-features/shell-history:0": {},
 	},
+	"mounts": [
+		// node modules cache
+		"source=${localWorkspaceFolderBasename}-node_modules,target=${containerWorkspaceFolder}/node_modules,type=volume",
+		// models cache
+		{
+			"source": "models",
+			"target": "/models",
+			"type": "volume"
+		},
+		// pip cachce
+		{
+			"source": "${localWorkspaceFolderBasename}-pip-cache",
+			"target": "/home/vscode/.cache/pip",
+			"type": "volume"
+		},
+	],
+	"remoteEnv": {
+		"MODELS_DIR": "/models",
+		"MODEL_FILE": "RWKV-4-Pile-1B5-20220929-ctx4096"
+	},
 	// If you have a gpu this will pass it in!
 	// "runArgs": [
 	// 	"--gpus",
 	// 	"all"
-	// ]
+	// ],
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	"forwardPorts": [
 		3000,
 		8080
 	],
-	// Use 'postCreateCommand' to run commands after the container is created.
-	// "postCreateCommand": "python --version",
-	// Configure tool-specific properties.
-	// "customizations": {},
+	"postCreateCommand": "npm i -g diff-so-fancy && conda init zsh && sudo chown -R vscode node_modules ~/.cache",
+	"postStartCommand": "npm install",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"dbaeumer.vscode-eslint",
+				"GitHub.copilot",
+				"ms-python.pylint",
+				"ms-python.python",
+				"streetsidesoftware.code-spell-checker",
+			],
+			"settings": {}
+		},
+	},
 	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
 	// "remoteUser": "root"
 }
