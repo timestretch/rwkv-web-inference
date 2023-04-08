@@ -1,0 +1,29 @@
+// Template a vscode workspace file
+{
+  "folders": [
+    {
+      "name": "Project Root",
+      "path": "."
+    },
+    {
+      "name": "Server",
+      "path": "server"
+    },
+    {
+      "name": "Chat Client",
+      "path": "packages/chat-client"
+    }
+  ],
+  "settings": {
+    "files.exclude": {
+      "**/.git": true,
+      "**/.svn": true,
+      "**/.hg": true,
+      "**/CVS": true,
+      "**/.DS_Store": true,
+      "**/Thumbs.db": true,
+      "packages": true,
+      "server": true,
+    }
+  }
+}
