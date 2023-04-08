@@ -40,7 +40,8 @@ args = types.SimpleNamespace()
 ########################################################################################################
 
 # args.RUN_DEVICE = "cuda"  # 'cpu' (already very fast) // 'cuda'
-# args.FLOAT_MODE = "bf16" # fp32 (good for cpu) // fp16 (might overflow) // bf16 (less accurate)
+# fp32 (good for cpu) // fp16 (might overflow) // bf16 (less accurate)
+# args.FLOAT_MODE = "fp16"
 
 args.RUN_DEVICE = "cpu"  # 'cpu' (already very fast) // 'cuda'
 # fp32 (good for cpu) // fp16 (might overflow) // bf16 (less accurate)
