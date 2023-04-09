@@ -1,73 +1,73 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the
 // README at: https://github.com/devcontainers/templates/tree/main/src/miniconda
 {
-	"name": "Miniconda (Python 3)",
-	"image": "mcr.microsoft.com/devcontainers/miniconda:0-3",
-	"features": {
-		"ghcr.io/devcontainers/features/common-utils:2": {
-			"installZsh": true,
-			"configureZshAsDefaultShell": true,
-			"installOhMyZsh": true,
-			"upgradePackages": true,
-			"username": "automatic",
-			"userUid": "automatic",
-			"userGid": "automatic"
-		},
-		"ghcr.io/devcontainers/features/node:1": {
-			"nodeGypDependencies": true,
-			"version": "18"
-		},
-		"ghcr.io/devcontainers/features/docker-in-docker:2": {
-			"version": "latest",
-			"enableNonRootDocker": "true",
-			"moby": "true"
-		},
-		"ghcr.io/stuartleeks/dev-container-features/shell-history:0": {},
-	},
-	"mounts": [
-		// node modules cache
-		"source=${localWorkspaceFolderBasename}-node_modules,target=${containerWorkspaceFolder}/node_modules,type=volume",
-		// models cache
-		{
-			"source": "models",
-			"target": "/models",
-			"type": "volume"
-		},
-		// pip cachce
-		{
-			"source": "${localWorkspaceFolderBasename}-pip-cache",
-			"target": "/home/vscode/.cache/pip",
-			"type": "volume"
-		},
-	],
-	"remoteEnv": {
-		"MODELS_DIR": "/models",
-		"MODEL_FILE": "RWKV-4-Pile-1B5-20220929-ctx4096"
-	},
-	// If you have a gpu this will pass it in!
-	// "runArgs": [
-	// 	"--gpus",
-	// 	"all"
-	// ],
-	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	"forwardPorts": [
-		3000,
-		8080
-	],
-	"postCreateCommand": "npm i -g diff-so-fancy && conda init zsh && sudo chown -R vscode node_modules ~/.cache",
-	"postStartCommand": "npm install",
-	"customizations": {
-		"vscode": {
-			"extensions": [
-				"dbaeumer.vscode-eslint",
-				"GitHub.copilot",
-				"ms-python.pylint",
-				"ms-python.python",
-				"streetsidesoftware.code-spell-checker",
-			],
-			"settings": {}
-		},
-	},
-	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
-	// "remoteUser": "root"
+    "name": "Miniconda (Python 3)",
+    "image": "mcr.microsoft.com/devcontainers/miniconda:0-3",
+    "features": {
+        "ghcr.io/devcontainers/features/common-utils:2": {
+            "installZsh": true,
+            "configureZshAsDefaultShell": true,
+            "installOhMyZsh": true,
+            "upgradePackages": true,
+            "username": "automatic",
+            "userUid": "automatic",
+            "userGid": "automatic"
+        },
+        "ghcr.io/devcontainers/features/node:1": {
+            "nodeGypDependencies": true,
+            "version": "18"
+        },
+        "ghcr.io/devcontainers/features/docker-in-docker:2": {
+            "version": "latest",
+            "enableNonRootDocker": "true",
+            "moby": "true"
+        },
+        "ghcr.io/stuartleeks/dev-container-features/shell-history:0": {},
+    },
+    "mounts": [
+        // node modules cache
+        "source=${localWorkspaceFolderBasename}-node_modules,target=${containerWorkspaceFolder}/node_modules,type=volume",
+        // models cache
+        {
+            "source": "models",
+            "target": "/models",
+            "type": "volume"
+        },
+        // pip cachce
+        {
+            "source": "${localWorkspaceFolderBasename}-pip-cache",
+            "target": "/home/vscode/.cache/pip",
+            "type": "volume"
+        },
+    ],
+    "remoteEnv": {
+        "MODELS_DIR": "/workspaces/rwkv-web-inference/models",
+        "MODEL_FILE": "RWKV-4-Raven-1B5-v8-Eng-20230408-ctx4096"
+    },
+    // If you have a gpu this will pass it in!
+    "runArgs": [
+        "--gpus",
+        "all"
+    ],
+    // Use 'forwardPorts' to make a list of ports inside the container available locally.
+    "forwardPorts": [
+        3000,
+        8080
+    ],
+    "postCreateCommand": "npm i -g diff-so-fancy && conda init zsh && sudo chown -R vscode node_modules ~/.cache",
+    "postStartCommand": "npm install",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "dbaeumer.vscode-eslint",
+                "GitHub.copilot",
+                "ms-python.pylint",
+                "ms-python.python",
+                "streetsidesoftware.code-spell-checker",
+            ],
+            "settings": {}
+        },
+    },
+    // Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+    // "remoteUser": "root"
 }

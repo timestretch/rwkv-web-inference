@@ -11,7 +11,7 @@ fi
 pushd "$MODELS_DIR"
 
 if [ ! -f "${MODEL_FILE}.pth" ]; then
-  wget -q https://huggingface.co/BlinkDL/rwkv-4-pile-1b5/resolve/main/RWKV-4-Pile-1B5-20220929-ctx4096.pth
+  wget -q https://huggingface.co/BlinkDL/rwkv-4-raven/resolve/main/RWKV-4-Raven-1B5-v8-Eng-20230408-ctx4096.pth
 fi
 
 popd

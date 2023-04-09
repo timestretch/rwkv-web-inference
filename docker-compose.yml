@@ -6,7 +6,7 @@ services:
     # restart: always
     environment:
       - MODELS_DIR=/models
-      - MODEL_FILE=RWKV-4-Pile-1B5-20220929-ctx4096
+      - MODEL_FILE=RWKV-4-Raven-1B5-v8-Eng-20230408-ctx4096
     volumes:
       - models:/models
     ports:

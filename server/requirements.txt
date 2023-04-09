@@ -1,4 +1,7 @@
-torch==1.13.1
+torch==1.13.1+cu116
 numpy==1.24.1
 flask==2.2.2
 transformers==4.25.1
+
+# package location
+--find-links https://download.pytorch.org/whl/torch_stable.html
