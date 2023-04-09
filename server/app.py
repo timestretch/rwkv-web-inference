@@ -28,6 +28,7 @@ try:
     os.environ["CUDA_VISIBLE_DEVICES"] = sys.argv[1]
 except:
     pass
+
 torch.backends.cudnn.benchmark = True
 torch.backends.cudnn.allow_tf32 = True
 torch.backends.cuda.matmul.allow_tf32 = True
@@ -39,16 +40,22 @@ args = types.SimpleNamespace()
 # Do this first: pip install torchdynamo
 ########################################################################################################
 
-# args.RUN_DEVICE = "cuda"  # 'cpu' (already very fast) // 'cuda'
+args.RUN_DEVICE = "cuda"  # 'cpu' (already very fast) // 'cuda'
 # fp32 (good for cpu) // fp16 (might overflow) // bf16 (less accurate)
-# args.FLOAT_MODE = "fp16"
+args.FLOAT_MODE = "fp16"
 
-args.RUN_DEVICE = "cpu"  # 'cpu' (already very fast) // 'cuda'
+# args.RUN_DEVICE = "cpu"  # 'cpu' (already very fast) // 'cuda'
 # fp32 (good for cpu) // fp16 (might overflow) // bf16 (less accurate)
-args.FLOAT_MODE = "fp32"
+# args.FLOAT_MODE = "fp32"
 
 # if args.RUN_DEVICE == "cuda":
 #     os.environ["RWKV_RUN_BACKEND"] = 'nvfuser' # !!!BUGGY!!! wrong output
+
+if args.RUN_DEVICE == "cuda":
+    print("cuda device count: ", torch.cuda.device_count())
+    print("current cuda device: ", torch.cuda.current_device())
+    print(torch.cuda.get_device_name(0))
+
 
 TOKEN_MODE = "pile"
 WORD_NAME = [
@@ -240,3 +247,7 @@ def api():
     response.headers['Access-Control-Allow-Headers'] = 'Origin,X-Requested-With,Content-Type,Accept,Authorization'
 
     return response
+
+
+if __name__ == '__main__':
+    app.run(host="0.0.0.0", port=8080)

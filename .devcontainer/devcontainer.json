@@ -45,10 +45,10 @@
         "MODEL_FILE": "RWKV-4-Raven-1B5-v8-Eng-20230408-ctx4096"
     },
     // If you have a gpu this will pass it in!
-    // "runArgs": [
-    // 	"--gpus",
-    // 	"all"
-    // ],
+    "runArgs": [
+        "--gpus",
+        "all"
+    ],
     // Use 'forwardPorts' to make a list of ports inside the container available locally.
     "forwardPorts": [
         3000,
